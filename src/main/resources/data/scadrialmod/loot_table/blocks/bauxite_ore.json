@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "scadrialmod:raw_aluminium_block"
+          "name": "scadrialmod:bauxite_ore"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "scadrialmod:blocks/raw_aluminium_block"
+  "random_sequence": "scadrialmod:blocks/bauxite_ore"
 }
