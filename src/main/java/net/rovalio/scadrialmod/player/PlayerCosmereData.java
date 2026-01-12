@@ -4,9 +4,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.RandomSource;
 import net.minecraftforge.common.capabilities.AutoRegisterCapability;
 import net.rovalio.scadrialmod.registry.MetalType;
-import java.util.EnumMap;
-import java.util.EnumSet;
-import java.util.Map;
+
+import java.util.*;
 
 @AutoRegisterCapability
 public class PlayerCosmereData {
@@ -145,8 +144,16 @@ public class PlayerCosmereData {
         });
         tag.put(TAG_RESERVES, reservesTag);
 
-        tag.putIntArray(TAG_ALLOMANTIC_METALS, this.allomanticMetals.stream().mapToInt(Enum::ordinal).toArray());
-        tag.putIntArray(TAG_FERUCHEMICAL_METALS, this.feruchemicalMetals.stream().mapToInt(Enum::ordinal).toArray());
+        List<Integer> indices = new ArrayList<>();
+        for (MetalType type : this.allomanticMetals) {
+            indices.add(type.ordinal());
+        }
+        tag.putIntArray(TAG_ALLOMANTIC_METALS, indices);
+        List<Integer> feruchemicalIndices = new ArrayList<>();
+        for (MetalType type : this.feruchemicalMetals) {
+            feruchemicalIndices.add(type.ordinal());
+        }
+        tag.putIntArray(TAG_FERUCHEMICAL_METALS, feruchemicalIndices);
     }
 
     public void loadNBT(CompoundTag tag) {
