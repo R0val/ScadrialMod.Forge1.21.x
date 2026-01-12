@@ -18,7 +18,6 @@ import org.jetbrains.annotations.Nullable;
 @Mod.EventBusSubscriber(modid = ScadrialMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class PlayerDataProvider implements ICapabilitySerializable<CompoundTag> {
 
-
     public static final Capability<PlayerCosmereData> COSMERE_DATA = CapabilityManager.get(new CapabilityToken<>(){});
 
     private final PlayerCosmereData data = new PlayerCosmereData();
