@@ -19,20 +19,19 @@ public enum MetalType {
     ELECTRUM("Oracle", "Pinnacle", "electrum"),
     ATIUM("Seers", "Framer", "atium");
 
-    private final String allomancyName;
-    private final String feruchemyName;
-    private final String allomanticMetal;
+    // Usamos un Record privado para guardar los datos inmutables
+    private final MetalInfo info;
 
-    MetalType(String allomancyName, String feruchemyName, String allomanticMetal) {
-        this.allomancyName = allomancyName;
-        this.feruchemyName = feruchemyName;
-        this.allomanticMetal = allomanticMetal;
+    // Constructor del Enum (simplificado)
+    MetalType(String allomancyName, String feruchemyName, String name) {
+        this.info = new MetalInfo(allomancyName, feruchemyName, name);
     }
 
-    public String getAllomancyName() { return allomancyName; }
-    public String getFeruchemyName() { return feruchemyName; }
-    public String getAllomanticMetal() {return allomanticMetal; }
+    // Getters
+    public String getAllomancyName() { return info.allomancyName(); }
+    public String getFeruchemyName() { return info.feruchemyName(); }
+    public String getAllomanticMetal() { return info.allomanticMetal(); }
 
-
+    // Definición del Record interno (boilerplate mínimo)
+    private record MetalInfo(String allomancyName, String feruchemyName, String allomanticMetal) {}
 }
-
